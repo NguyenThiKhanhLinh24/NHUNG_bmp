@@ -214,7 +214,9 @@ static int bmp180_probe(struct i2c_client *client, const struct i2c_device_id *i
 
     if (bmp180_read_calib_data() < 0)
         return -EIO;
-
+    
+    printk(KERN_INFO "Initializing BMP180 Driver\n");
+    printk(KERN_INFO "BMP180 driver installed\n");
     return misc_register(&bmp180_misc);
 }
 
@@ -222,6 +224,8 @@ static int bmp180_probe(struct i2c_client *client, const struct i2c_device_id *i
 static void bmp180_remove(struct i2c_client *client)
 {
     misc_deregister(&bmp180_misc);
+    printk(KERN_INFO "Exiting BMP180 driver\n");
+    printk(KERN_INFO "BMP180 driver removed\n");
 }
 
 // Danh sách thiết bị I2C hỗ trợ
@@ -244,5 +248,6 @@ static struct i2c_driver bmp180_driver = {
 module_i2c_driver(bmp180_driver);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Nguyen Huynh Thang");
+MODULE_AUTHOR("22146228_Nguyen Huynh Thang");
 MODULE_DESCRIPTION("Trình điều khiển BMP180 với hỗ trợ nhiệt độ, áp suất, độ cao, dự báo thời tiết và giám sát môi trường");
+

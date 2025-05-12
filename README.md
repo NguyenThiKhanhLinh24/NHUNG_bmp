@@ -51,7 +51,7 @@ echo 1-0077 | sudo tee /sys/bus/i2c/drivers/bmp280/unbind
 ```
 3. Tải module (driver BMP180):
 ```c
-sudo insmod ./bmp180_driver.ko
+sudo insmod ./bmp180_ioctl.ko
 ```
 4. Kiểm tra xem module BMP180 có được nạp đúng cách không:
 ```c
@@ -120,7 +120,7 @@ echo 1-0077 | sudo tee /sys/bus/i2c/drivers/bmp280/unbind
 ```   
 2. Nạp driver BMP180 vào kernel:
 ```c
-sudo insmod ./bmp180_driver.ko
+sudo insmod ./bmp180_ioctl.ko
 ```
 3. Chạy chương trình
 ```c
@@ -137,7 +137,7 @@ make clean
 ```
 Gỡ bỏ Module Driver:
 ```c
-sudo rmmod bmp180_driver
+sudo rmmod bmp180_ioctl
 ```
 #### Chú ý 
 1. Kết nối phần cứng: Đảm bảo BMP180 kết nối với SDA1 và SCL1 (I2C1) trên Raspberry Pi, cung cấp 3.3V (không dùng 5V).
@@ -157,6 +157,9 @@ Công cụ cần thiết: Cài đặt make, gcc, và i2c-tools nếu chưa có:
 ```c
 sudo apt-get install build-essential i2c-tools
 ```
+
+
+
 
 
 
